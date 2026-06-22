@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Aiko Clicks - Fun Clicking Game</title>
+<meta name="description" content="Play Aiko Clicks, a fast and fun clicking game to test your speed and reflexes.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFCBQKZ732"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QFCBQKZ732');
+</script>
+    <!-- Meta tags -->
+    <meta name="google-site-verification" content="8U0ZdlWNUlXkJ0QMiRsaKKhESiyGm4j_rYdAqKMXoHI">
+    <!-- Title -->
+    <title>Aiko</title>
+    <!-- CSS styles -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url('bg aiko.png');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            cursor: default;
+        }
+        .box {
+            visibility: hidden;
+        }
+        button {
+            height: 45px;
+            width: 60px;
+            font-size: medium;
+        }
+        p[id="text"] {
+            color: #fff;
+        }
+        p[id="average"] {
+            visibility: hidden;
+        }
+        p[id="feedback"] {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            visibility: hidden;
+        }
+        .timerpos {
+            top: 25%;
+        }
+        .bigbox {
+            background-color: aliceblue;
+            border-radius: 15px;
+            opacity: 85%;
+            position: relative;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        a {
+            font-size: medium;
+            color: #000;
+        }
+        a:hover {
+            color: chartreuse;
+            background-color: #000;
+            border-radius: 4px;
+            padding: 5px;
+            transition: ease-in-out 0.5s;
+        }
+        .form {
+            background-color: aliceblue;
+            border-radius: 15px;
+            opacity: 85%;
+            position: relative;
+            margin: 10px auto;
+            font-size: medium;
+            width: 90%;
+            max-width: 300px;
+            height: auto;
+            padding: 15px;
+            text-align: center;
+        }
+        p[id="rank1"], p[id="rank2"], p[id="rank3"] {
+            font-size: large;
+            transition: ease-in 0.3s;
+        }
+        p[id="rank1"]:hover, p[id="rank2"]:hover, p[id="rank3"]:hover {
+            background-color: greenyellow;
+            cursor: pointer;
+        }
+        .timesection {
+            width: 90%;
+            max-width: 300px;
+            margin: 20px auto;
+            cursor: pointer;
+            background-color: aliceblue;
+            opacity: 80%;
+            border-radius: 5px;
+            text-align: center;
+            font-size: large;
+            text-decoration: none;
+            padding: 15px;
+        }
+        b {
+            font-size: large;
+        }
+        .note {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: aliceblue;
+            visibility: hidden;
+            top: 5%;
+            border-radius: 3%;
+        }
+        p[id="note"] {
+            font-size: large;
+            position: absolute;
+            top: 8%;
+            left: 33%;
+            background-color: black;
+            border-radius: 10%;
+            color: #fff;
+        }
+        b[id="note1"] {
+            position: absolute;
+            top: 3%;
+            left: 1.5%;
+            background-color: aliceblue;
+            opacity: 90%;
+            width: 50px;
+            height: 25px;
+            border-radius: 10%;
+            border-color: #000;
+        }
+        span[id='rank'] {
+            font-size: xx-large;
+        }
+        span[id='name2'] {
+            font-size: xx-large;
+        }
+        span[id='score2'] {
+            font-size: xx-large;
+        }
+        span[id='name3'] {
+            font-size: xx-large;
+        }
+        span[id='score3'] {
+            font-size: xx-large;
+        }
+        span[id='name1'] {
+            font-size: xx-large;
+        }
+        span[id='score1'] {
+            font-size: xx-large;
+        }
+        img[id="logo"] {
+            position: absolute;
+            top: 10%;
+        }
+        @media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+    </style>
+    <link rel="icon" type="image/png" href="Logo.png">
+    
+</head>
+<body>
+    <div class="form">
+        <h2>LeaderBoard</h2>
+        <pre id="rank2"><img src="diamond_10647559.png" id="badge1" height="45px"><span id="rank">1. </span><span id="name1">Player</span> <span id="score1">0</span></pre>
+        <pre id="rank2"><img src="steelf.png" id="badge2" height="31px"><span id="rank">2. </span><span id="name2">Player</span> <span id="score2">0</span></pre>
+        <pre id="rank3"><img src="planet-8742339_640-removebg-preview.png" id="badge3" height="31px"><span id="rank">3. </span><span id="name3">Player</span> <span id="score3">0</span></pre>
+    </div>
+    <div class="bigbox">
+        <div class="timerpos">
+            <b><p>Timer: <span id="timer">10</span></p></b>
+        </div>
+        <b><p>Score: <span id="count">0</span></p></b>
+        <div class="startbox">
+            <div class="box">
+                <button id="click" onclick="incrementCount()">Tap!</button>
+            </div>
+        </div>
+        <p id="feedback">Times Up!</p>
+        <p id="average">Average Click Speed: <span id="averageValue">0</span></p>
+    </div>
+    <div class="timesection" id="timesection">
+        <b>Game Difficulty Selection</b><br>
+        <abbr title="Click Target : 70"><b onclick="startGame(10)">Time: 10 Sec</b><br></abbr>
+        <abbr title="Click Target : 100"><b onclick="startGame(15)">Time: 15 Sec</b><br></abbr>
+        <abbr title="Click Target : 130"><b onclick="startGame(20)">Time: 20 Sec</b><br></abbr>
+        <abbr title="Click Target : 170"><b onclick="startGame(25)">Time: 25 Sec</b><br></abbr>
+        <abbr title="Click Target : 200"><b onclick="startGame(30)">Time: 30 Sec</b><br></abbr>
+        <b onclick="startGame(86400)">Mode: Endless</b>
+    </div>
+    <img src="Logo.png" height="100px" id="logo">
+    <script>
+        let count = 0, timer = 10, interval;
+
+        const scores = JSON.parse(localStorage.getItem('leaderboard')) || [
+            { name: "Player", score: 0 },
+            { name: "Player", score: 0 },
+            { name: "Player", score: 0 }
+        ];
+
+        function incrementCount() {
+            count++;
+            document.getElementById('count').innerText = count;
+        }
+
+        function decrementTimer() {
+            if (timer > 0) {
+                timer--;
+                document.getElementById('timer').innerText = timer;
+            } else {
+                clearInterval(interval);
+                document.getElementById('click').style.visibility = 'hidden';
+                document.getElementById('feedback').style.visibility = 'visible';
+                document.getElementById('average').style.visibility = 'visible';
+                document.getElementById('averageValue').innerText = (count / 10).toFixed(2);
+                updateLeaderboard(count);
+            }
+        }
+
+        function startGame(duration) {
+            count = 0;
+            timer = duration;
+            document.getElementById('timer').innerText = timer;
+            document.getElementById('count').innerText = count;
+            document.getElementById('click').style.visibility = 'visible';
+            document.getElementById('feedback').style.visibility = 'hidden';
+            document.getElementById('average').style.visibility = 'hidden';
+            clearInterval(interval);
+            interval = setInterval(decrementTimer, 1000);
+        }
+
+        function updateLeaderboard(score) {
+            const name = prompt("Enter your name:", "Player") || "Player";
+            scores.push({ name, score });
+            scores.sort((a, b) => b.score - a.score);
+            scores.length = Math.min(scores.length, 3);
+            localStorage.setItem('leaderboard', JSON.stringify(scores));
+
+            document.getElementById('name1').innerText = scores[0].name;
+            document.getElementById('score1').innerText = scores[0].score;
+            document.getElementById('name2').innerText = scores[1].name;
+            document.getElementById('score2').innerText = scores[1].score;
+            document.getElementById('name3').innerText = scores[2].name;
+            document.getElementById('score3').innerText = scores[2].score;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedScores = JSON.parse(localStorage.getItem('leaderboard')) || scores;
+            if (savedScores.length) {
+                document.getElementById('name1').innerText = savedScores[0].name;
+                document.getElementById('score1').innerText = savedScores[0].score;
+                document.getElementById('name2').innerText = savedScores[1].name;
+                document.getElementById('score2').innerText = savedScores[1].score;
+                document.getElementById('name3').innerText = savedScores[2].name;
+                document.getElementById('score3').innerText = savedScores[2].score;
+            }
+        });
+
+        function shownote() {
+            document.getElementById('note').style.visibility = 'visible';
+        }
+
+        function nonote() {
+            document.getElementById('note').style.visibility = 'hidden';
+        }
+    </script>
+</body>
+</html>
